@@ -65,9 +65,12 @@ function handleClick(event) {
         minutesSpan.textContent = timeLeft.minutes.toString().padStart(2, '0');
     } else minutesSpan.textContent = timeLeft.minutes;
 
-    if (timeLeft.seconds < 10) {
+    if (timeLeft.seconds < 10 && timeLeft.seconds>0) {
       // secondsSpan.textContent = "0" + timeLeft.seconds;
       secondsSpan.textContent = timeLeft.seconds.toString().padStart(2, '0');
+    } else if (timeLeft.seconds < 0) {
+      stopTimer()
+      Notify.warning('Please choose a date in the future and checked button "stop"');
     } else secondsSpan.textContent = timeLeft.seconds;
   }, 1000);
 }
