@@ -7,6 +7,11 @@ function createPromise(position, delay) {
   }
 }
 
+const form = document.querySelector(".form");
+const button = document.querySelector("button");
+const delay = document.querySelector(".delay");
+const step = document.querySelector(".step");
+const amount = document.querySelector(".amount")
 
 
 // Напиши скрипт, який на момент сабміту форми викликає функцію
