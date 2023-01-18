@@ -19,6 +19,7 @@
 const start = document.querySelector(".btn_start");
 const stop = document.querySelector(".btn_stop");
 const body = document.querySelector("body");
+let timerId = null;
 
 const handleClickStart = (event) => {
     console.log("start")

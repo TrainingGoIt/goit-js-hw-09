@@ -5,12 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Countdown timer</title>
     <link rel="stylesheet" href="css/common.css" />
+    <style type="text/css">
+
+      body {
+        background-color: rgb(119, 165, 192);
+         color: rgb(14, 52, 124);
+        text-align: center;
+      }
+
+      p {
+        text-align: left;
+      }
+
+      input {
+        border: solid 2px rgb(14, 52, 124);
+        padding-left: 5px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        height: 30px;
+         box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+}
+        
+      
+
+      button {
+        border: solid 2px rgb(14, 52, 124);
+        border-radius: 5px;
+        height: 30px;
+        padding : 0 20px;
+         box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+}
+      
+
+      .timer {
+       
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .value {
+        font-weight: 500;
+        font-size: 50px;
+      }
+
+      .label {
+        text-transform: uppercase;
+      }
+
+    </style>
   </head>
-  <body>
+  <body>data-hours
     <p><a href="index.html">Go back</a></p>
 
     <input type="text" id="datetime-picker" />
-    <button type="button" data-start>Start</button>
+    <button type="button" data-start disabled>Start</button>
 
     <div class="timer">
       <div class="field">
@@ -18,7 +79,7 @@
         <span class="label">Days</span>
       </div>
       <div class="field">
-        <span class="value" data-hours>00</span>
+        <span class="value" data-hours >00</span>
         <span class="label">Hours</span>
       </div>
       <div class="field">
@@ -30,7 +91,8 @@
         <span class="label">Seconds</span>
       </div>
     </div>
-
+    
+    <script src="dist/notiflix-notify-aio-X.X.X.min.js"></script>
     <script src="js/02-timer.js" type="module"></script>
   </body>
 </html>
