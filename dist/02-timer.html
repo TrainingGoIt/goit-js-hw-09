@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown timer</title>
+    <link rel="stylesheet" href="/01-color-switcher.101ee4ef.css">
+    <style>body {
+  color: #0e347c;
+  text-align: center;
+  background-color: #77a5c0;
+}
+
+p {
+  text-align: left;
+}
+
+input {
+  height: 30px;
+  border: 2px solid #0e347c;
+  border-radius: 5px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-left: 5px;
+  box-shadow: 0 2.8px 2.2px #00000009, 0 6.7px 5.3px #0000000c, 0 12.5px 10px #0000000f, 0 22.3px 17.9px #00000012, 0 41.8px 33.4px #00000016, 0 100px 80px #0000001f;
+}
+
+button {
+  height: 30px;
+  border: 2px solid #0e347c;
+  border-radius: 5px;
+  padding: 0 20px;
+  box-shadow: 0 2.8px 2.2px #00000009, 0 6.7px 5.3px #0000000c, 0 12.5px 10px #0000000f, 0 22.3px 17.9px #00000012, 0 41.8px 33.4px #00000016, 0 100px 80px #0000001f;
+}
+
+.timer {
+  justify-content: center;
+  gap: 10px;
+  display: flex;
+}
+
+.field {
+  flex-direction: column;
+  display: flex;
+}
+
+.value {
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.label {
+  text-transform: uppercase;
+}
+
+</style>
+  </head>
+  <body>data-hours
+    <p><a href="/index.html">Go back</a></p>
+
+    <input type="text" id="datetime-picker">
+    <button type="button" data-start="" disabled="">Start</button>
+
+    <div class="timer">
+      <div class="field">
+        <span class="value" data-days="">00</span>
+        <span class="label">Days</span>
+      </div>
+      <div class="field">
+        <span class="value" data-hours="">00</span>
+        <span class="label">Hours</span>
+      </div>
+      <div class="field">
+        <span class="value" data-minutes="">00</span>
+        <span class="label">Minutes</span>
+      </div>
+      <div class="field">
+        <span class="value" data-seconds="">00</span>
+        <span class="label">Seconds</span>
+      </div>
+    </div>
+
+    <script src="/02-timer.f9388f03.js" defer=""></script>
+  </body>
+</html>
