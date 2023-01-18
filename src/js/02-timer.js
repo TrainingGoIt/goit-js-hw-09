@@ -37,13 +37,10 @@ const fp = flatpickr(input,
   }
   });
 
-
+        
 button.addEventListener("click", handleClick);
 
 function handleClick(event) {
-  if (selectedDates[0] > new Date()) {
-          button.removeAttribute("disabled")
-        }
   button.disabled = !event.target.checked;
 
   timerId = setInterval(() => { 
