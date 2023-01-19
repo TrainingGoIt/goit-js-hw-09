@@ -22,16 +22,16 @@ const fp = flatpickr(input,
     defaultDate: new Date(),
     minDate: "today",
     onClose(selectedDates) {
-      timerId = setInterval(() => { 
-        const timeNow = new Date();
+      timerId = setInterval( () => { 
+        const timeNow = Date.now();
         const timeSelected = selectedDates[0].getTime();
         const miliseconds = timeSelected - timeNow;
         convertMs(miliseconds)
       }, 10);
-      if (selectedDates[0] < new Date()) {
+      if (selectedDates[0] < Date.now()) {
          Notify.warning('Please choose a date in the future');
         }
-        if (selectedDates[0] > new Date()) {
+        if (selectedDates[0] > Date.now()) {
           button.removeAttribute("disabled")
         }
   }
@@ -43,36 +43,35 @@ button.addEventListener("click", handleClick);
 function handleClick(event) {
   button.disabled = !event.target.checked;
 
+  transferTimeToTimer()
+
   timerId = setInterval(() => { 
-    const timeLeft = JSON.parse(sessionStorage.getItem("time"));
+    transferTimeToTimer()
+  }, 1000);
+
+}
+
+function transferTimeToTimer() {
+   const timeLeft = JSON.parse(sessionStorage.getItem("time"));
    
     if ((Number(Object.values(timeLeft).join(""))) <= 0) {
       stopTimer()
     }
-   
-    if (timeLeft.days < 10) {
-      // daysSpan.textContent = "0"+timeLeft.days;
-      daysSpan.textContent = timeLeft.days.toString().padStart(2, '0');
-    } else daysSpan.textContent = timeLeft.days;
+ 
+    daysSpan.textContent = timeLeft.days;
   
-    if (timeLeft.hours < 10) {
-      // hoursSpan.textContent = "0" + timeLeft.hours;
-      hoursSpan.textContent = timeLeft.hours.toString().padStart(2, '0');
-    }else hoursSpan.textContent = timeLeft.hours;
+    hoursSpan.textContent = timeLeft.hours;
 
-    if (timeLeft.minutes < 10) { 
-    // minutesSpan.textContent = "0"+ timeLeft.minutes;
-        minutesSpan.textContent = timeLeft.minutes.toString().padStart(2, '0');
-    } else minutesSpan.textContent = timeLeft.minutes;
+    minutesSpan.textContent = timeLeft.minutes;
 
-    if (timeLeft.seconds < 10 && timeLeft.seconds>0) {
-      // secondsSpan.textContent = "0" + timeLeft.seconds;
-      secondsSpan.textContent = timeLeft.seconds.toString().padStart(2, '0');
-    } else if (timeLeft.seconds < 0) {
+    if (timeLeft.seconds < 0) {
       stopTimer()
       Notify.warning('Please choose a date in the future and checked button "stop"');
     } else secondsSpan.textContent = timeLeft.seconds;
-  }, 1000);
+}
+
+function addLeadingZero(value) {
+  return String(value).padStart(2, '0');
 }
 
 function stopTimer() {
@@ -85,18 +84,20 @@ function convertMs(ms) {
   const minute = second * 60;
   const hour = minute * 60;
   const day = hour * 24;
-
-  const days = Math.floor(ms / day);
+  let days;
+  if (Math.floor(ms / day) < 100) {
+    days = addLeadingZero(Math.floor(ms / day));
+  } else days = Math.floor(ms / day)
   // Remaining hours
-  const hours = Math.floor((ms % day) / hour);
+  const hours = addLeadingZero(Math.floor((ms % day) / hour));
   // Remaining minutes
-  const minutes = Math.floor(((ms % day) % hour) / minute);
+  const minutes = addLeadingZero(Math.floor(((ms % day) % hour) / minute));
   // Remaining seconds
   
-  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+  const seconds = addLeadingZero(Math.floor((((ms % day) % hour) % minute) / second));
 
   sessionStorage.setItem("time", JSON.stringify({ days, hours, minutes, seconds }))
-
+  sessionStorage.setItem("ms", ms)
 }
 
 

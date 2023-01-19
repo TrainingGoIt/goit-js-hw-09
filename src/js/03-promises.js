@@ -15,7 +15,7 @@ const amount = document.querySelector(".amount")
 
 
 // Напиши скрипт, який на момент сабміту форми викликає функцію
-// createPromise(position, delay) стільки разів, скільки ввели в 
+// createPromise(position, delay) стільки разів, скільки ввели в
 // поле amount.Під час кожного виклику передай їй номер промісу(position),
 //   що створюється, і затримку, враховуючи першу затримку(delay), введену
 // користувачем, і крок(step).
@@ -39,3 +39,4 @@ const amount = document.querySelector(".amount")
 
 // Для відображення повідомлень користувачеві,
 //   замість console.log(), використовуй бібліотеку notiflix.
+
