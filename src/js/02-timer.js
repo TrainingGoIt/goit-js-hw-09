@@ -13,6 +13,7 @@ const hoursSpan = document.querySelector("[data-hours]");
 const minutesSpan = document.querySelector("[data-minutes]");
 const secondsSpan = document.querySelector("[data-seconds]");
 let timerId = null;
+const audio = new Audio("https://zvukipro.com/uploads/files/2021-04/1618575190_show_time_out_01.mp3");
 
 const fp = flatpickr(input,
   {
@@ -64,8 +65,9 @@ function transferTimeToTimer() {
 
     minutesSpan.textContent = timeLeft.minutes;
 
-    if (timeLeft.seconds < 0) {
-      stopTimer()
+  if (timeLeft.seconds < 0) {
+      console.log("audio")
+    stopTimer()
       Notify.warning('Please choose a date in the future and checked button "stop"');
     } else secondsSpan.textContent = timeLeft.seconds;
 }
@@ -76,6 +78,8 @@ function addLeadingZero(value) {
 
 function stopTimer() {
   clearInterval(timerId);
+  console.log("audio")
+  audio.play()
 }
 
 function convertMs(ms) {
@@ -97,7 +101,7 @@ function convertMs(ms) {
   const seconds = addLeadingZero(Math.floor((((ms % day) % hour) % minute) / second));
 
   sessionStorage.setItem("time", JSON.stringify({ days, hours, minutes, seconds }))
-  sessionStorage.setItem("ms", ms)
+
 }
 
 
