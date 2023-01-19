@@ -66,7 +66,6 @@ function transferTimeToTimer() {
     minutesSpan.textContent = timeLeft.minutes;
 
   if (timeLeft.seconds < 0) {
-      console.log("audio")
     stopTimer()
       Notify.warning('Please choose a date in the future and checked button "stop"');
     } else secondsSpan.textContent = timeLeft.seconds;
