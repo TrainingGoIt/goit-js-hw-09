@@ -24,17 +24,14 @@ const fp = flatpickr(input,
     minDate: "today",
     onClose(selectedDates) {
       timerId = setInterval( () => { 
-        const timeNow = Date.now();
         const timeSelected = selectedDates[0].getTime();
-        const miliseconds = timeSelected - timeNow;
+        const miliseconds = timeSelected - Date.now();
         convertMs(miliseconds)
       }, 10);
       if (selectedDates[0] < Date.now()) {
          Notify.warning('Please choose a date in the future');
         }
-        if (selectedDates[0] > Date.now()) {
-          button.removeAttribute("disabled")
-        }
+        button.removeAttribute("disabled")
   }
   });
 
