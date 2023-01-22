@@ -9,6 +9,7 @@ const amountForm = document.querySelector(".amount")
 let position;
 let delay;
 let amount;
+let step;
   
 
 form.addEventListener("submit", (event) => {
